@@ -188,11 +188,11 @@ if __name__ == '__main__':
     # Parameters for the proposed model
     parser.add_argument('--TDdroprate', type=float, default=0.2, metavar='TDdroprate',
                         help='drop rate for edges in the top-down propagation graph')
-    parser.add_argument('--BUdroprate', type=float, default=0.2, metavar='TDdroprate',
+    parser.add_argument('--BUdroprate', type=float, default=0.2, metavar='BUdroprate',
                         help='drop rate for edges in the bottom-up dispersion graph')
-    parser.add_argument('--edge_infer_td', action='store_true', default=False,
+    parser.add_argument('--edge_infer_td', action='store_true', #default=False,
                         help='edge inference in the top-down graph')
-    parser.add_argument('--edge_infer_bu', action='store_true', default=True,
+    parser.add_argument('--edge_infer_bu', action='store_true', #default=True,
                         help='edge inference in the bottom-up graph')
     parser.add_argument('--edge_loss_td', type=float, default=0.2, metavar='edge_loss_td',
                         help='a hyperparameter gamma to weight the unsupervised relation learning loss in the top-down propagation graph')
@@ -217,6 +217,7 @@ if __name__ == '__main__':
 
     for iter in range(args.iterations):
         iter_timestamp = time()
+        # fold_tests, fold_trains = load5foldData(args.datasetname)
         fold_tests, fold_trains = load5foldData(args.datasetname, seed=args.seed)
 
         accs, NR_F1, FR_F1, TR_F1, UR_F1 = [], [], [], [], []
