@@ -235,11 +235,11 @@ if __name__ == '__main__':
                     acc, F1, F2, F3, F4,
                     time() - fold_timestamp))
 
-        iter_acc = np.mean(accs)
-        iter_NR_F1 = np.mean(NR_F1)
-        iter_FR_F1 = np.mean(FR_F1)
-        iter_TR_F1 = np.mean(TR_F1)
-        iter_UR_F1 = np.mean(UR_F1)
+        total_accs.append(np.mean(accs))
+        total_NR_F1.append(np.mean(NR_F1))
+        total_FR_F1.append(np.mean(FR_F1))
+        total_TR_F1.append(np.mean(TR_F1))
+        total_UR_F1.append(np.mean(UR_F1))
 
         print("****  Iteration Result {}/{} Time:{:.4f}s  ****".format(iter, args.iterations, time() - iter_timestamp))
         print("Acc:{:.4f}\tNR_F1:{:.4f}\tFR_F1:{:.4f}\tTR_F1:{:.4f}\tUR_F1:{:.4f}\t\tavg_F1:{:.4f}".format(np.mean(accs),
@@ -250,10 +250,10 @@ if __name__ == '__main__':
                                                                                                          (np.mean(NR_F1) + np.mean(FR_F1) + np.mean(TR_F1) + np.mean(UR_F1)) / 4))
 
     print("****  Total Result  ****")
-    print("Acc:{:.4f}\tNR_F1:{:.4f}\tFR_F1:{:.4f}\tTR_F1:{:.4f}\tUR_F1:{:.4f}".format(np.mean(iter_acc),
-                                                                                      np.mean(iter_NR_F1),
-                                                                                      np.mean(iter_FR_F1),
-                                                                                      np.mean(iter_TR_F1),
-                                                                                      np.mean(iter_UR_F1)))
+    print("Acc:{:.4f}\tNR_F1:{:.4f}\tFR_F1:{:.4f}\tTR_F1:{:.4f}\tUR_F1:{:.4f}".format(np.mean(total_accs),
+                                                                                      np.mean(total_NR_F1),
+                                                                                      np.mean(total_FR_F1),
+                                                                                      np.mean(total_TR_F1),
+                                                                                      np.mean(total_UR_F1)))
 
 
